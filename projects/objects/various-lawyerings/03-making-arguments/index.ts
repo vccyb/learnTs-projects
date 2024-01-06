@@ -1,4 +1,38 @@
 // Write your types here! ✨
+export type MotionBase = {
+	from: "defendant" | "plaintiff";
+	reason: string;
+};
+
+export type PreTrialMotion = MotionBase & {
+	classification: "dismiss" | "suppress" | "venue";
+	step: "pre-trial";
+};
+
+export type PostTrialMotion = MotionBase & {
+	classification: "acquittal" | "correction" | "new trial";
+	step: "post-trial";
+};
+
+export type TrialMotion = PostTrialMotion | PreTrialMotion;
+
+export type AllowedMotion = TrialMotion & {
+	deliberationHours: number;
+	status: "allowed";
+};
+
+export type DeniedMotion = TrialMotion & {
+	annoyedJustice: boolean;
+	deliberationHours: number;
+	status: "denied";
+};
+
+export type PendingMotion = TrialMotion & {
+	estimatedDeliberationHours: number;
+	status: "pending";
+};
+
+export type Motion = AllowedMotion | DeniedMotion | PendingMotion;
 
 export const motions: Motion[] = [
 	{
