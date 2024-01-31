@@ -1,4 +1,10 @@
 {
 	// Write your configuration options here! ✨
-	"include": ["."]
+	"compilerOptions": {
+		"declaration": true, // 生成声明文件
+		"declarationMap": true, // 生成声明文件地图
+		"sourceMap": true // 生成源代码映射文件
+	},
+	"include": ["."],
+	"exclude": ["*.verify.*"]
 }
